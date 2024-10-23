@@ -94,7 +94,7 @@ export async function openModal(event) {
     modalPoster.src = img_url;
     modalPoster.alt = movieData.title;
     modalTitle.textContent = movieData.title;
-    modalOverview.textContent = movieData.overview;
+    modalOverview.textContent = movieData.overview || `제공된 영화 설명이 없습니다.`;
     modalRelease.textContent = movieData.release_date;
     modalRating.textContent = movieData.vote_average;
 
