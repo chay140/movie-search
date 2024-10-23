@@ -1,0 +1,223 @@
+body {
+  background-color: #f0f0f0;
+  text-align: center;
+
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  cursor: pointer;
+}
+
+header {
+  background-color: #dfc369;
+  color: black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#inputWrapper {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+#inputWrapper > label {
+  font-size: 18px;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.25rem;
+  z-index: 2;
+  color: #888;
+  transition: 0.3s ease-in-out; /* Smooth transition for floating effect */
+  pointer-events: none; /* Make sure the label doesn't interfere with clicking */
+}
+
+#searchInput {
+  padding: 1.3rem 1.5rem;
+  width: 100%;
+  font-size: 18px;
+  border-radius: 30px;
+  border: 5px solid #dfc369;
+  outline: none;
+  transition: border-color 0.3s ease, padding 0.3s ease; /* Add padding transition for smooth effect */
+}
+
+#searchInput:focus {
+  border-color: rgba(120, 98, 57, 0.6);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 10px;
+}
+
+#searchInput:focus + label,
+#searchInput:not(:placeholder-shown) + label {
+  top: 0.5rem;
+  left: 2rem;
+  font-size: 12px; /* Shrink the label */
+  color: #786239; /* Change the label color */
+}
+
+button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  background-color: #b08f53;
+  color: black;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #786239;
+  color: white;
+}
+
+#showBookmark {
+  width: 20%;
+}
+
+#movieList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.movie-card {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.3) 5px 5px 10px;
+  border-radius: 1em;
+  width: 200px;
+  height: 380px;
+  margin: 10px;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.2s ease;
+}
+
+.movie-card > img {
+  width: 100%;
+  height: 75%;
+  object-fit: fill;
+}
+
+.movie-card:hover {
+  transform: scale(1.1);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 30px 50px;
+}
+
+.card-context {
+  height: 20%;
+  margin: 0;
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.card-context > h3 {
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2; /* 최대 2줄 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; /* ... */
+}
+.card-context > p {
+  padding: 0;
+  margin: 0;
+}
+
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.detail-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+  text-align: left;
+  max-height: 80%;
+  overflow-y: auto;
+  margin: auto;
+}
+
+/* scroll bar 꾸며보기 */
+/* Scrollbar track */
+.detail-content::-webkit-scrollbar {
+  border-radius: 15px;
+  width: 10px;
+}
+
+/* Scrollbar track */
+.detail-content::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 15px;
+}
+
+/* Scrollbar handle */
+.detail-content::-webkit-scrollbar-thumb {
+  background-color: #555; /* Greyish color for the handle */
+  border-radius: 15px;
+  border: 2px solid #f5f5f5; /* Gives space around the handle */
+}
+
+/* Scrollbar handle on hover */
+.detail-content::-webkit-scrollbar-thumb:hover {
+  background-color: #333; /* Darker color on hover */
+}
+
+#close {
+  margin-top: 0;
+  background-color: #eeeeee;
+  padding: 0px;
+  color: red;
+  float: right;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s ease;
+  border-style: none;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+
+#close:hover {
+  color: #000;
+  background-color: lightgrey;
+}
+
+#modalImage {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.hidden {
+  display: none;
+}
