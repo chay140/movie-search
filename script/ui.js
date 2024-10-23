@@ -52,7 +52,13 @@ export function printMovies(data) {
     // 필요한 데이터 저장
     const id = datum.id;
     const poster_path = datum.poster_path;
-    const img_url = `https://image.tmdb.org/t/p/original${poster_path}`;
+    let img_url;
+    if (poster_path === null) {
+      // 포스터 제공 안된 경우 처리
+      img_url = `./images/no_image.png`;
+    } else {
+      img_url = `https://image.tmdb.org/t/p/original${poster_path}`;
+    }
     const rounded_vote_average =
       Math.round(Number(datum.vote_average) * 10) / 10;
 
@@ -83,7 +89,13 @@ export async function openModal(event) {
 
     // 이미지만 url 생성해서 붙이기
     const poster_path = movieData.poster_path;
-    const img_url = `https://image.tmdb.org/t/p/original${poster_path}`;
+    let img_url;
+    if (poster_path === null) {
+      // 포스터 제공 안된 경우 처리
+      img_url = `./images/no_image.png`;
+    } else {
+      img_url = `https://image.tmdb.org/t/p/original${poster_path}`;
+    }
 
     // 모달 오픈
     movieModal.classList.toggle("hidden");
@@ -96,9 +108,11 @@ export async function openModal(event) {
     modalPoster.src = img_url;
     modalPoster.alt = movieData.title;
     modalTitle.textContent = movieData.title;
-    modalOverview.textContent = movieData.overview || `제공된 영화 설명이 없습니다.`;
+    modalOverview.textContent =
+      movieData.overview || `제공된 영화 설명이 없습니다.`;
     modalRelease.textContent = movieData.release_date;
-    const rounded_vote_average = Math.round(Number(movieData.vote_average) * 10) / 10;
+    const rounded_vote_average =
+      Math.round(Number(movieData.vote_average) * 10) / 10;
     modalRating.textContent = rounded_vote_average;
 
     // 모달 오픈시 표시할 버튼
@@ -139,6 +153,9 @@ export function addBookmark() {
 
   if (!bookmarkIds.includes(movieId)) {
     bookmarkIds.push(movieId);
+  } else {
+    alert("이미 북마크에 추가된 영화입니다");
+    return;
   }
 
   window.localStorage.setItem("bookmarkIds", JSON.stringify(bookmarkIds));
@@ -158,6 +175,9 @@ export function removeBookmark() {
   if (bookmarkIds.includes(movieId)) {
     const i = bookmarkIds.indexOf(movieId);
     bookmarkIds.splice(i, 1);
+  } else {
+    alert("북마크에 없는 영화입니다");
+    return;
   }
   window.localStorage.setItem("bookmarkIds", JSON.stringify(bookmarkIds));
 

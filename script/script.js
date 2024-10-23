@@ -27,6 +27,8 @@ header.addEventListener("click", handleHeaderClick);
 showBMBtn.addEventListener("click", showBM);
 
 // 영화 상세정보 창 열기
+// 각 카드마다 모달 열기 리스너가 아닌
+// 영화 섹션에 이벤트 위임
 movieListSection.addEventListener("click", openModal);
 
 // 모달 닫기
