@@ -53,6 +53,8 @@ export function printMovies(data) {
     const id = datum.id;
     const poster_path = datum.poster_path;
     const img_url = `https://image.tmdb.org/t/p/original${poster_path}`;
+    const rounded_vote_average =
+      Math.round(Number(datum.vote_average) * 10) / 10;
 
     // 카드 생성
     const movieCardDiv = document.createElement("div");
@@ -62,7 +64,7 @@ export function printMovies(data) {
       <img src="${img_url}" alt="${datum.title}">
 			<div class="card-context">
       	<h3>${datum.title}</h3>
-      	<p>평점: ${datum.vote_average}</p>
+      	<p>평점: ${rounded_vote_average}</p>
 			</div>
 		`;
 
@@ -96,7 +98,8 @@ export async function openModal(event) {
     modalTitle.textContent = movieData.title;
     modalOverview.textContent = movieData.overview || `제공된 영화 설명이 없습니다.`;
     modalRelease.textContent = movieData.release_date;
-    modalRating.textContent = movieData.vote_average;
+    const rounded_vote_average = Math.round(Number(movieData.vote_average) * 10) / 10;
+    modalRating.textContent = rounded_vote_average;
 
     // 모달 오픈시 표시할 버튼
     // 북마크 되어있는지 확인하기
