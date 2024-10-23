@@ -49,7 +49,6 @@ export function printMovies(data) {
 
   // 메인 섹션에 카드 붙이기
   for (const datum of data) {
-    // id, title, overview, poster_path, release_date, vote_average
     // 필요한 데이터 저장
     const id = datum.id;
     const poster_path = datum.poster_path;
@@ -177,7 +176,8 @@ export function removeBookmark() {
 export async function showBM() {
   bookmarkShown = true;
   // 북마크 보기
-  let bookmarkIds = JSON.parse(window.localStorage.getItem("bookmarkIds"));
+  let bookmarkIds =
+    JSON.parse(window.localStorage.getItem("bookmarkIds")) || [];
 
   let bmResults = await Promise.all(
     bookmarkIds.map(async (id) => {
@@ -197,7 +197,6 @@ export async function searchMovie() {
   bookmarkShown = false;
   // 대소문자 구분
   const input = searchInput.value.toLowerCase();
-  console.log("입력값 =>", input);
   let search_url = `${base_url}/search/movie?query=${input}&include_adult=false&language=ko-KR&page=1&api_key=${api_key}`;
 
   // 아무것도 입력되지 않은 경우 초기 리스트 띄우기
@@ -227,7 +226,7 @@ export function debounce(func, delay) {
 }
 
 // Trottling 함수
-export function throttle(func, delay) {
+function throttle(func, delay) {
   let timer = null;
 
   return function () {
