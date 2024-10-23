@@ -18,7 +18,6 @@ const searchInput = document.querySelector("#searchInput");
 const showBMBtn = document.querySelector("#showBookmark");
 const addBookmarkBtn = document.querySelector("#addBookmarkBtn");
 const removeBookmarkBtn = document.querySelector("#removeBookmarkBtn");
-const bookmarkStatusModal = document.querySelector("#bookmarkStatusModal");
 
 // 이벤트 리스너들
 // 제목 클릭시 새로고침
