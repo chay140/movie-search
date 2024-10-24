@@ -20,7 +20,7 @@
 
 <details>
 <summary>
-  언어 비율
+  모든 프로젝트 통틀어 사용한 언어 비율
 </summary>
   
    [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=chay140)](https://github.com/anuraghazra/github-readme-stats)
