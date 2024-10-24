@@ -27,6 +27,6 @@
    
 </details>
 
-## 배포 [링크](https://chay140.github.io/movie-search/)
+## 배포 링크 [chay140/movie-search](https://chay140.github.io/movie-search/)
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=footer" />
