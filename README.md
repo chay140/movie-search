@@ -3,6 +3,8 @@
 # 감자의 영화 검색
 > TMDB API를 이용한 영화 검색 페이지를 제작했습니다.
 
+**배포 링크** : [chay140/movie-search](https://chay140.github.io/movie-search/)
+
 ## 페이지 구성
 **헤더**
 * 제목 : 클릭시 새로고침
@@ -34,10 +36,10 @@
 * ui.js : 영화 페이지 로딩 / 영화 카드 생성 등 ui 관련 로직을 구현한 파일
 * bookmark.js : 북마크 관련 로직 구현한 파일
 
-## 사용된 주 언어
+## 기술 스택
 ![js](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black)
-![html](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)
-![css](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
+![html](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![css](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 <details>
 <summary>
@@ -48,6 +50,8 @@
    
 </details>
 
-## 배포 링크 [chay140/movie-search](https://chay140.github.io/movie-search/)
+
+### Readme 작성
+![markdown](https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white)
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=footer" />
