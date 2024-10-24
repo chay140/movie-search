@@ -12,6 +12,7 @@
 * script.js : 이벤트 리스너를 모은 파일
 * api.js : API call을 실행하는 로직을 구현한 파일
 * ui.js : 영화 페이지 로딩 / 영화 카드 생성 등 ui 관련 로직을 구현한 파일
+* bookmark.js : 북마크 관련 로직 구현한 파일
 
 ## 사용된 주 언어
 ![js](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black)
