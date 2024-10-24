@@ -1,4 +1,5 @@
 // UI관련
+// 주로 메인 페이지 기능 관련
 import {
   fetchData,
   fetchMovieById,
@@ -7,24 +8,29 @@ import {
   base_url,
 } from "./api.js";
 
+import {
+  detailContent,
+  addBookmarkBtn,
+  removeBookmarkBtn,
+  getBookmarkShown,
+  setBookmarkShown,
+} from "./bookmark.js";
+
 // Elements
 const searchInput = document.querySelector("#searchInput");
 const movieModal = document.querySelector("#movieModal");
-const detailContent = document.querySelector("#movieDetail");
 const modalPoster = document.querySelector("#modalImage");
 const modalTitle = document.querySelector("#modalTitle");
 const modalOverview = document.querySelector("#modalOverview");
 const modalRelease = document.querySelector("#modalReleaseDate");
 const modalRating = document.querySelector("#modalRating");
-const addBookmarkBtn = document.querySelector("#addBookmarkBtn");
-const removeBookmarkBtn = document.querySelector("#removeBookmarkBtn");
 
-// Flags
-let bookmarkShown = false;
+
 
 // 초기 로딩
 export async function loadPage() {
-  bookmarkShown = false;
+  // 북마크 보기 페이지에 머무르지 않았음 표시
+  setBookmarkShown(false);
 
   // 초기 로딩 (1)
   // 데이터 불러와서 저장
@@ -139,85 +145,10 @@ export function closeModal(event) {
   }
 }
 
-// handle bookmarks
-// add bookmark
-export function addBookmark() {
-  // 버튼 바꾸기
-  addBookmarkBtn.style.display = "none";
-  removeBookmarkBtn.style.display = "block";
-
-  // local storage에 저장하기
-  const movieId = detailContent.id;
-  let bookmarkIds =
-    JSON.parse(window.localStorage.getItem("bookmarkIds")) || [];
-
-  if (!bookmarkIds.includes(movieId)) {
-    bookmarkIds.push(movieId);
-  } else {
-    alert("이미 북마크에 추가된 영화입니다");
-    return;
-  }
-
-  window.localStorage.setItem("bookmarkIds", JSON.stringify(bookmarkIds));
-  alert("북마크 추가됨");
-}
-
-// remove bookmark
-export function removeBookmark() {
-  // 버튼 바꾸기
-  removeBookmarkBtn.style.display = "none";
-  addBookmarkBtn.style.display = "block";
-
-  // local storage에서 지우기
-  const movieId = detailContent.id;
-  let bookmarkIds = JSON.parse(window.localStorage.getItem("bookmarkIds"));
-
-  if (bookmarkIds.includes(movieId)) {
-    const i = bookmarkIds.indexOf(movieId);
-    bookmarkIds.splice(i, 1);
-  } else {
-    alert("북마크에 없는 영화입니다");
-    return;
-  }
-  window.localStorage.setItem("bookmarkIds", JSON.stringify(bookmarkIds));
-
-  // 추가사항) 북마크 제거시 모달 닫기
-  movieModal.classList.toggle("hidden");
-
-  // 북마크를 모두 제거한 경우
-  if (bookmarkIds.length === 0) {
-    loadPage();
-  } else if (bookmarkShown) {
-    // 북마크 보기에 머물렀던 경우
-    showBM();
-  }
-
-  alert("북마크 취소됨");
-}
-
-// 북마크 로드 함수 따로 만들기
-export async function showBM() {
-  bookmarkShown = true;
-  // 북마크 보기
-  let bookmarkIds =
-    JSON.parse(window.localStorage.getItem("bookmarkIds")) || [];
-
-  let bmResults = await Promise.all(
-    bookmarkIds.map(async (id) => {
-      return await fetchMovieById(id);
-    })
-  );
-
-  if (bmResults.length === 0) {
-    alert("북마크된 영화가 없습니다!");
-  } else {
-    printMovies(bmResults);
-  }
-}
-
 // 영화 검색 함수
 export async function searchMovie() {
-  bookmarkShown = false;
+  // 북마크 보기 페이지에 머무르지 않았음 표시
+  setBookmarkShown(false);
   // 대소문자 구분
   const input = searchInput.value.toLowerCase();
   let search_url = `${base_url}/search/movie?query=${input}&include_adult=false&language=ko-KR&page=1&api_key=${api_key}`;

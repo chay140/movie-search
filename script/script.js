@@ -4,11 +4,13 @@ import {
   openModal,
   closeModal,
   searchMovie,
+  debounce,
+} from "./ui.js";
+import {
   addBookmark,
   removeBookmark,
   showBM,
-  debounce
-} from "./ui.js";
+} from "./bookmark.js";
 
 // Elements
 const header = document.querySelector("header");
