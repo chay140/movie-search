@@ -179,21 +179,4 @@ export function debounce(func, delay) {
   };
 }
 
-// Trottling 함수
-function throttle(func, delay) {
-  let timer = null;
-
-  return function () {
-    const args = arguments;
-    if (!timer) {
-      func.apply(this, args);
-      // 타이머 값 지정
-      timer = true;
-      timer = setTimeout(() => {
-        timer = null;
-      }, delay);
-    }
-  };
-}
-
 // api event에 대해 throttling 하는 것이 더 나을 수 있음
