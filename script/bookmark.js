@@ -78,10 +78,10 @@ export function removeBookmark() {
 export async function showBM() {
   setBookmarkShown(true);
   // 북마크 보기
-  let bookmarkIds =
+  const bookmarkIds =
     JSON.parse(window.localStorage.getItem("bookmarkIds")) || [];
 
-  let bmResults = await Promise.all(
+  const bmResults = await Promise.all(
     bookmarkIds.map(async (id) => {
       return await fetchMovieById(id);
     })
