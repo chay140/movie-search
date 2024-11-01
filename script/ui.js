@@ -167,7 +167,10 @@ export async function searchMovie() {
   printMovies(data);
 }
 
-// 디바운싱 함수
+// 디바운싱 함수 >> 기능적인 함수가 많아진다면
+// 별도의 파일에 선언해서 export 하는 것이
+// 기능 분리에 도움이 된다
+// 이번 경우 debounce는 한 번만 호출되기에 (필수는 X)
 export function debounce(func, delay) {
   let timer;
   return function () {
